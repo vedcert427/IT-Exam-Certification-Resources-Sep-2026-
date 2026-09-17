@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CertPath - A professional certification exam preparation portal providing exam-specific knowledge, study guides, preparation resources, and educational content for technology, cloud, networking, security, and business certifications.">
+<title>CertPath - Certification Exam Preparation Resources</title>
+<style>
+:root {
+  --primary: #1a56a0;
+  --primary-dark: #133d7a;
+  --primary-light: #e8f0fb;
+  --accent: #0e9f7e;
+  --accent-light: #e6f7f3;
+  --background: #f5f6f8;
+  --surface: #ffffff;
+  --surface-alt: #eef1f6;
+  --text-dark: #1a202c;
+  --text-muted: #5a6473;
+  --border: #dde2ea;
+  --white: #ffffff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.04);
+  --radius: 10px;
+  --radius-lg: 16px;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  background: var(--background);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; height: auto; }
+
+/* ===== LAYOUT ===== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section { padding: 72px 0; }
+
+/* ===== HEADER ===== */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.logo span { color: var(--text-dark); }
+.logo strong { color: var(--primary); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.nav-links a {
+  display: block;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-header-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.btn-header-search:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-dark);
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+
+.mobile-nav {
+  display: none;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 12px 20px 16px;
+}
+
+.mobile-nav.open { display: block; }
+
+.mobile-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-nav ul a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.mobile-nav ul a:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+/* ===== HERO ===== */
+#hero {
+  background: var(--white);
+  padding: 80px 0 72px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-accent-bg {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid #b2dfd5;
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+  letter-spacing: -0.02em;
+}
+
+.hero h1 span { color: var(--primary); }
+
+.hero p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+.hero-search {
+  display: flex;
+  gap: 0;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 20px;
+}
+
+.hero-search:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(26,86,160,0.1);
+}
+
+.hero-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 13px 16px;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background: transparent;
+  min-width: 0;
+}
+
+.hero-search input::placeholder { color: var(--text-muted); }
+
+.hero-search button {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 13px 22px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.hero-search button:hover { background: var(--primary-dark); }
+
+.hero-cta-secondary {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.hero-cta-secondary a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.hero-visual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.hero-card-mini {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hero-card-mini:first-child {
+  grid-column: 1 / -1;
+  background: var(--primary-light);
+  border-color: #c2d6ef;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+}
+
+.mini-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.mini-icon.accent {
+  background: var(--accent);
+}
+
+.mini-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mini-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* ===== STATS ===== */
+#stats {
+  padding: 48px 0;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.stat-card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary);
+}
+
+.stat-card.accent-bar::before { background: var(--accent); }
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-card.accent-bar .stat-number { color: var(--accent); }
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ===== SECTION HEADINGS ===== */
+.section-header {
+  margin-bottom: 40px;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.section-header h2 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.25;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.section-header p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ===== FILTERS & SEARCH ===== */
+#resources { background: var(--background); }
+
+.resource-controls {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.search-bar-wrap {
+  position: relative;
+  max-width: 560px;
+}
+
+.search-bar-wrap svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+#resourceSearch {
+  width: 100%;
+  padding: 12px 40px 12px 42px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#resourceSearch:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(26,86,160,0.09);
+}
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 4px;
+  border-radius: 4px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.search-clear:hover { color: var(--text-dark); }
+.search-clear.visible { display: flex; }
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.filter-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 4px;
+}
+
+.filter-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+.results-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.results-meta strong { color: var(--text-dark); }
+
+/* ===== EXAM CARDS ===== */
+.exam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+.exam-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.exam-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.exam-card-header {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.exam-code-badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.exam-header-text { flex: 1; min-width: 0; }
+
+.exam-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+.exam-vendor {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 600;
+  background: var(--accent-light);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid #b2dfd5;
+}
+
+.exam-card-body {
+  padding: 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exam-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.knowledge-area {
+  background: var(--background);
+  border-radius: 8px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+}
+
+.knowledge-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.knowledge-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.knowledge-tag {
+  font-size: 0.73rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.exam-card-footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--background);
+}
+
+.resource-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resource-link-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resource-link-item a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s;
+  width: 100%;
+  justify-content: center;
+}
+
+.resource-link-item a:hover { background: var(--primary-dark); }
+.resource-link-item a:hover { text-decoration: none; }
+
+.resource-link-item.secondary a {
+  background: var(--white);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.resource-link-item.secondary a:hover {
+  background: var(--primary-light);
+}
+
+.view-all-links-toggle {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.extra-links { display: none; }
+.extra-links.open { display: flex; flex-direction: column; gap: 6px; }
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 64px 24px;
+  color: var(--text-muted);
+}
+
+.no-results-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.no-results h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+mark {
+  background: #fff3cd;
+  color: var(--text-dark);
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* ===== PREPARATION GUIDE ===== */
+#preparation { background: var(--white); }
+
+.prep-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.prep-card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.prep-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.prep-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.prep-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.callout-box {
+  background: var(--primary-light);
+  border: 1px solid #c2d6ef;
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-top: 32px;
+}
+
+.callout-box p {
+  font-size: 0.9rem;
+  color: var(--primary-dark);
+  line-height: 1.7;
+}
+
+.callout-box strong { color: var(--primary-dark); }
+
+/* ===== FAQ ===== */
+#faq { background: var(--background); }
+
+.faq-list {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 18px 20px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  transition: background 0.15s;
+}
+
+.faq-question:hover { background: var(--background); }
+
+.faq-question[aria-expanded="true"] {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.faq-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+  transition: background 0.15s, transform 0.25s;
+  color: var(--text-muted);
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  background: var(--primary);
+  color: var(--white);
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 20px 18px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  border-top: 1px solid var(--border);
+}
+
+.faq-answer.open { display: block; }
+
+/* ===== FOOTER ===== */
+#footer {
+  background: #14202f;
+  color: #b0bac6;
+  padding: 56px 0 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand .logo {
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.footer-brand .logo-icon { background: var(--primary); }
+.footer-brand .logo strong { color: var(--white); }
+.footer-brand .logo span { color: #b0bac6; }
+
+.footer-brand p {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: #7d8fa1;
+  margin-bottom: 20px;
+}
+
+.footer-col h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-col ul a {
+  font-size: 0.875rem;
+  color: #7d8fa1;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-col ul a:hover { color: var(--white); }
+
+.footer-bottom {
+  border-top: 1px solid #2a3d52;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-copyright {
+  font-size: 0.82rem;
+  color: #5e7080;
+}
+
+.footer-disclaimer {
+  font-size: 0.78rem;
+  color: #4d6070;
+  line-height: 1.65;
+  max-width: 900px;
+}
+
+/* ===== UTILITY ===== */
+.hidden { display: none !important; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover { background: var(--primary-dark); text-decoration: none; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 52px 0; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-content { grid-template-columns: 1fr; gap: 32px; }
+  .hero-visual { display: none; }
+  .hero { padding: 52px 0; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .exam-grid { grid-template-columns: 1fr; }
+  .prep-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .footer-bottom { flex-direction: column; }
+  .btn-header-search span { display: none; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-number { font-size: 1.5rem; }
+  .hero h1 { font-size: 1.6rem; }
+  .filter-row { gap: 6px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="logo" aria-label="CertPath Home">
+        <div class="logo-icon" aria-hidden="true">CP</div>
+        <div><strong>Cert</strong><span>Path</span></div>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#preparation">Study Guide</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-header-search" onclick="document.getElementById('resourceSearch').focus(); document.getElementById('resources').scrollIntoView({behavior:'smooth'});" aria-label="Search resources">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span>Search</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobileNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#preparation">Study Guide</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="hero" aria-labelledby="hero-heading">
+  <div class="hero-accent-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge" aria-label="Category">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Certification Preparation Portal
+        </div>
+        <h1 id="hero-heading">Prepare Smarter for Your <span>Certification Exam</span></h1>
+        <p>CertPath is an independent educational resource hub providing exam-specific knowledge, structured preparation guidance, and curated study resources for technology, business, and professional certification programs.</p>
+        <div class="hero-search" role="search" aria-label="Search exam resources">
+          <label for="heroSearchInput" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Search exams</label>
+          <input type="text" id="heroSearchInput" placeholder="Search by exam code, vendor, or topic..." aria-label="Search exams" autocomplete="off">
+          <button type="button" onclick="performHeroSearch()" aria-label="Search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Search
+          </button>
+        </div>
+        <p class="hero-cta-secondary">Browse all exams below or <a href="#preparation">read the preparation guide</a></p>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card-mini">
+          <div class="mini-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div>
+            <div class="mini-label">Exam Resources</div>
+            <div class="mini-value">Multi-Vendor Coverage</div>
+          </div>
+        </div>
+        <div class="hero-card-mini">
+          <div class="mini-icon accent">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="mini-label">Study Smarter</div>
+          <div class="mini-value">Structured Prep</div>
+        </div>
+        <div class="hero-card-mini">
+          <div class="mini-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="mini-label">Certification</div>
+          <div class="mini-value">Multiple Vendors</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section id="stats" aria-labelledby="stats-heading">
+  <div class="container">
+    <h2 id="stats-heading" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Resource Statistics</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" id="statTotalExams">0</div>
+        <div class="stat-label">Unique Exam Codes</div>
+      </div>
+      <div class="stat-card accent-bar">
+        <div class="stat-number" id="statTotalLinks">0</div>
+        <div class="stat-label">Study Resources</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statVendors">0</div>
+        <div class="stat-label">Certification Vendors</div>
+      </div>
+      <div class="stat-card accent-bar">
+        <div class="stat-number" id="statCategories">0</div>
+        <div class="stat-label">Technology Areas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESOURCES ===== -->
+<section id="resources" aria-labelledby="resources-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Exam Library</div>
+      <h2 id="resources-heading">Certification Exam Resources</h2>
+      <p>Browse exam-specific preparation resources. Each entry includes a focused description, key knowledge areas, and direct links to study materials.</p>
+    </div>
+
+    <div class="resource-controls">
+      <div class="search-bar-wrap">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="resourceSearch" placeholder="Search exams, vendors, topics..." aria-label="Search exam resources" autocomplete="off">
+        <button class="search-clear" id="searchClear" aria-label="Clear search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="filter-row" id="filterRow" role="group" aria-label="Filter by category">
+        <span class="filter-label">Filter:</span>
+      </div>
+    </div>
+
+    <p class="results-meta" id="resultsMeta" aria-live="polite"></p>
+
+    <div class="exam-grid" id="examGrid" role="list">
+    </div>
+  </div>
+</section>
+
+<!-- ===== PREPARATION GUIDE ===== -->
+<section id="preparation" aria-labelledby="prep-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Study Strategy</div>
+      <h2 id="prep-heading">Certification Preparation Guide</h2>
+      <p>A structured approach to exam preparation significantly improves both your understanding and your confidence on exam day.</p>
+    </div>
+
+    <div class="prep-grid">
+      <div class="prep-card">
+        <div class="prep-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Understand the Exam Objectives</h3>
+        <p>Before studying anything else, locate the official exam blueprint or objectives document from the certification vendor. This document defines exactly what topics you will be assessed on and the relative weight of each domain.</p>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3>Create a Realistic Study Schedule</h3>
+        <p>Estimate the total preparation time the exam typically requires and build a week-by-week plan. Allocate more time to domains with higher exam weights. Include dedicated review sessions and at least one full week for practice tests before your exam date.</p>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Master Concepts Before Memorization</h3>
+        <p>Focus first on understanding underlying principles, not just memorizing facts. When you genuinely understand a concept, you can answer scenario-based questions that use different phrasing from what you studied.</p>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Study Official Documentation</h3>
+        <p>Vendor-published documentation, whitepapers, and product guides are primary sources that exam questions draw from. Reading documentation builds accurate understanding that practice questions alone cannot provide.</p>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Build Practical Hands-On Experience</h3>
+        <p>For technology certifications, working directly with the relevant products in a lab or trial environment deepens your understanding far beyond reading alone. Practical experience helps you answer situational questions accurately.</p>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Practice with Timed Sessions</h3>
+        <p>Simulate real exam conditions by answering practice questions under time pressure. This trains your pacing, reduces test anxiety, and identifies which topics require more review before your scheduled exam.</p>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Track and Review Weak Areas</h3>
+        <p>After each practice session, note the specific topics or domains where you scored lower. Return to the official material for those areas before practicing again. Targeted review of weak areas yields more improvement than repeating topics you already know.</p>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Final Week Preparation</h3>
+        <p>In the final week, avoid introducing new complex topics. Focus on reviewing your notes, revisiting difficult concepts, completing one or two final practice tests, and ensuring you understand the exam logistics, including format, time limits, and location or proctoring requirements.</p>
+      </div>
+
+      <div class="prep-card">
+        <div class="prep-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Use Community and Peer Resources</h3>
+        <p>Study groups, forums, and professional communities can clarify confusing concepts, share practical experiences, and offer diverse perspectives on challenging topics. Community resources complement but should not replace structured study from authoritative sources.</p>
+      </div>
+    </div>
+
+    <div class="callout-box" role="note">
+      <p><strong>Important note on practice materials:</strong> Use practice questions to test your knowledge and identify gaps, not as a substitute for learning. Questions that appear on actual certification exams are confidential and protected. Studying questions claimed to be real exam questions raises serious ethical and legal concerns and may result in certification revocation. Always source practice materials from reputable, legitimate providers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Common Questions</div>
+      <h2 id="faq-heading">Frequently Asked Questions</h2>
+      <p>Practical answers to common certification preparation questions.</p>
+    </div>
+
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+          How should I start preparing for a certification exam?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq1">
+          Begin by reviewing the official exam guide or blueprint published by the certification vendor. This document lists all the domains and topic areas covered in the exam along with their relative weights. Use this as the foundation for your study plan. Then assess your current knowledge against the listed objectives and identify gaps before selecting study materials.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+          How do I identify the most important exam topics?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq2">
+          The official exam blueprint provides percentage weights for each knowledge domain. Topics with higher weights deserve proportionally more study time. Beyond percentages, focus on foundational concepts that other topics build on. If a concept appears across multiple domains, it is likely to be tested from several different angles.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+          How should I organize my study schedule?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq3">
+          Divide the total preparation time across exam domains proportionally to their weights. Study one domain at a time rather than jumping between topics. Schedule brief review sessions for previously covered material to maintain retention. Reserve the final week before your exam for review and timed practice tests rather than new content.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+          Should I study concepts before practicing questions?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq4">
+          Yes. Build a solid conceptual foundation before moving to practice questions. Using practice questions before you have studied the material often leads to memorizing answers without understanding the reasoning. Once you understand a topic, practice questions help you confirm your understanding and identify remaining gaps.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq5">
+          How can I improve weak knowledge areas?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq5">
+          Return to the source material for any topic where you consistently answer questions incorrectly. Read the relevant section in the official guide or documentation, then try to explain the concept in your own words. Hands-on practice in a lab environment is especially effective for technical topics. Review the topic again after a short interval to confirm retention.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq6">
+          How can official documentation help with preparation?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq6">
+          Official documentation is the most authoritative source for certification exam content. Exam questions are written by subject matter experts who work with the same products and standards described in the official documentation. Reading it builds accurate, precise understanding and helps you answer nuanced scenario-based questions that require more than surface-level knowledge.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq7">
+          How should I prepare during the final days before an exam?
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq7">
+          Avoid learning entirely new material in the last two to three days. Focus on reviewing your summary notes, revisiting concepts you found difficult, and completing one final timed practice test. Confirm all exam logistics including the start time, location or online proctoring requirements, and any identification you need to bring. Get adequate rest the night before your exam.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" aria-label="CertPath Home">
+          <div class="logo-icon">CP</div>
+          <div><strong>Cert</strong><span>Path</span></div>
+        </a>
+        <p>CertPath is an independent educational resource portal providing exam-specific knowledge, preparation guidance, and study resources for technology and professional certification programs.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#stats">Statistics</a></li>
+          <li><a href="#resources">Exam Resources</a></li>
+          <li><a href="#preparation">Preparation Guide</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Technology Areas</h4>
+        <ul>
+          <li><a href="#resources">Cloud Computing</a></li>
+          <li><a href="#resources">Cybersecurity</a></li>
+          <li><a href="#resources">Networking</a></li>
+          <li><a href="#resources">Development</a></li>
+          <li><a href="#resources">Business &amp; Finance</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Vendors</h4>
+        <ul>
+          <li><a href="#resources">Microsoft</a></li>
+          <li><a href="#resources">Cisco</a></li>
+          <li><a href="#resources">VMware</a></li>
+          <li><a href="#resources">Oracle</a></li>
+          <li><a href="#resources">GIAC / SANS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2026 CertPath. All rights reserved.</p>
+      <p class="footer-disclaimer">
+        CertPath is an independent educational resource website and is not affiliated with, endorsed by, or officially connected to any certification vendor, including but not limited to Microsoft, Cisco, Oracle, VMware, GIAC, CompTIA, ISACA, Huawei, Nokia, Salesforce, or any other organization whose certifications may be referenced. All exam names, codes, and vendor names are the property of their respective owners. Resources linked on this site are provided for educational reference purposes only. CertPath does not guarantee exam success, does not distribute actual exam questions, and does not claim that any linked resource contains proprietary or confidential exam content.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== EXAM DATA =====
+const exams = [
+  {
+    code: "CIMAPRA19-E01-1",
+    name: "CIMA Professional Chartered Management Accountant - E01",
+    vendor: "CIMA",
+    category: "Business & Finance",
+    description: "Covers enterprise-level management accounting, financial reporting, and organisational strategy for the CIMA Professional qualification.",
+    topics: ["Management Accounting", "Financial Strategy", "Enterprise Risk", "Business Economics", "Performance Management"],
+    preparation: "Focus on management accounting principles, cost management techniques, budgeting, variance analysis, and strategic decision-making frameworks used in enterprise environments.",
+    links: [
+      { label: "View Resource", url: "https://fanspo.com/nba/s/wizards/p/tMVpnqNAHH5dvw/how-no-1-cimapra19-e01-1-exam-dumps-help-you-reach-your-certification-goal" }
+    ]
+  },
+  {
+    code: "FCP_FML_AD-7.4",
+    name: "Fortinet Certified Professional - FortiMail Administrator 7.4",
+    vendor: "Fortinet",
+    category: "Cybersecurity",
+    description: "Tests knowledge of FortiMail email security platform administration, anti-spam configuration, email filtering policies, and threat protection at version 7.4.",
+    topics: ["Email Security", "Anti-Spam Policies", "FortiMail Administration", "Threat Protection", "MTA Configuration"],
+    preparation: "Study FortiMail deployment modes, policy configuration, anti-spam and antivirus settings, encryption, archive management, and integration with FortiGate and Fortinet Security Fabric.",
+    links: [
+      { label: "View Resource", url: "https://fanspo.com/nba/s/wizards/p/S2_K9G4FFvdcv3/how-no-1-fcp_fml_ad-74-exam-dumps-build-confidence-for-exam-day" }
+    ]
+  },
+  {
+    code: "PEGACPSSA23V1",
+    name: "Pega Certified Senior System Architect (CSSA) 2023",
+    vendor: "Pegasystems",
+    category: "Development & Architecture",
+    description: "Validates advanced Pega Platform system architecture skills including application design, data modeling, integration, and performance optimisation.",
+    topics: ["Pega Platform Architecture", "Case Design", "Data Modeling", "Integration", "Performance Tuning"],
+    preparation: "Review advanced case management, decision strategy design, integration patterns using REST and SOAP, data storage, Robotic Process Automation, and Pega deployment best practices.",
+    links: [
+      { label: "View Resource", url: "https://selene427.tawk.help/article/updated-pegacpssa23v1-exam-questions-dumps-2026" }
+    ]
+  },
+  {
+    code: "Web-Development-Foundation",
+    name: "Web Development Foundation",
+    vendor: "General / Multi-Vendor",
+    category: "Development & Architecture",
+    description: "A foundational certification covering core web development technologies including HTML, CSS, JavaScript, and basic web architecture principles.",
+    topics: ["HTML5", "CSS3", "JavaScript Basics", "Responsive Design", "Web Standards"],
+    preparation: "Study semantic HTML, CSS layout models including flexbox and grid, JavaScript DOM manipulation, basic event handling, and web accessibility principles.",
+    links: [
+      { label: "View Resource", url: "https://selene427.tawk.help/article/updated-web-development-foundation-exam-questions-dumps-2026" }
+    ]
+  },
+  {
+    code: "H13-624_V5.5",
+    name: "HCIP-Storage V5.5",
+    vendor: "Huawei",
+    category: "Infrastructure & Storage",
+    description: "Validates intermediate-to-advanced Huawei storage solution skills, covering enterprise storage architecture, OceanStor product families, and storage network design.",
+    topics: ["OceanStor Architecture", "SAN / NAS", "Storage Networking", "Data Protection", "Backup & Recovery"],
+    preparation: "Focus on Huawei OceanStor product configuration, RAID technology, FC and iSCSI SAN design, NAS protocols, data replication, and disaster recovery planning.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdYX2aJis9y/" }
+    ]
+  },
+  {
+    code: "GH-200",
+    name: "GitHub Foundations",
+    vendor: "GitHub / Microsoft",
+    category: "Development & Architecture",
+    description: "Covers foundational GitHub skills including repository management, collaboration workflows, pull requests, issues, and basic Git concepts.",
+    topics: ["Git Basics", "Repository Management", "Pull Requests", "GitHub Actions Intro", "Collaboration Workflows"],
+    preparation: "Study core Git commands, branching strategies, GitHub repository settings, collaboration features including forks and pull requests, GitHub Issues, and an introduction to GitHub Actions automation.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdYX8cZivZJ/" }
+    ]
+  },
+  {
+    code: "CSQE",
+    name: "Certified Software Quality Engineer",
+    vendor: "ASQ",
+    category: "Quality & Testing",
+    description: "ASQ certification validating expertise in software quality assurance, testing methodologies, defect tracking, metrics, and quality systems.",
+    topics: ["Software Testing", "Quality Management", "Defect Tracking", "Test Planning", "Software Metrics"],
+    preparation: "Review software development life cycles, testing levels and techniques, quality management systems, configuration management, risk analysis, and software measurement and metrics.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdYYHKjipXw/" }
+    ]
+  },
+  {
+    code: "NCLEX-PN",
+    name: "NCLEX Practical Nursing",
+    vendor: "NCSBN",
+    category: "Healthcare",
+    description: "The National Council Licensure Examination for Practical Nurses, testing clinical knowledge and nursing judgment for entry-level practical nursing licensure.",
+    topics: ["Clinical Judgment", "Patient Care", "Pharmacology", "Safety & Infection Control", "Psychosocial Integrity"],
+    preparation: "Study nursing fundamentals, medical-surgical nursing, pharmacology, mental health nursing, maternal-newborn care, and next-generation clinical judgment strategies used in the NCLEX-PN question format.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdYZCxlCoRS/" }
+    ]
+  },
+  {
+    code: "H12-411_V2.0",
+    name: "HCIA-DataCom V2.0",
+    vendor: "Huawei",
+    category: "Networking",
+    description: "Entry-level Huawei data communication certification covering LAN switching, IP routing, VPN basics, and Huawei VRP operating system administration.",
+    topics: ["IP Routing", "LAN Switching", "VRP OS", "VPN Fundamentals", "OSPF & Static Routing"],
+    preparation: "Study the Huawei VRP command-line interface, Ethernet switching, STP, VLAN configuration, IP addressing, static and dynamic routing protocols including RIP and OSPF, and basic NAT concepts.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdYZMCliqmD/" }
+    ]
+  },
+  {
+    code: "N16291GC10",
+    name: "Oracle Training Course N16291GC10",
+    vendor: "Oracle",
+    category: "Database & Cloud",
+    description: "An Oracle course-based certification or assessment covering foundational or intermediate Oracle database and cloud concepts specific to the N16291GC10 curriculum.",
+    topics: ["Oracle Database", "SQL Fundamentals", "Database Administration", "Oracle Cloud Basics", "Data Management"],
+    preparation: "Review SQL query writing, Oracle database architecture, basic DBA tasks including backup and recovery, user management, and an introduction to Oracle Cloud Infrastructure services.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdYZlKHCjoK/" }
+    ]
+  },
+  {
+    code: "2V0-31.24",
+    name: "VMware vSphere 8.x Professional",
+    vendor: "VMware / Broadcom",
+    category: "Cloud & Virtualisation",
+    description: "Tests professional-level VMware vSphere 8.x skills including virtual machine management, vCenter operations, storage, networking, and resource optimisation.",
+    topics: ["vSphere Architecture", "vCenter Server", "ESXi Configuration", "VM Management", "Storage & Networking"],
+    preparation: "Study vSphere installation, vCenter high availability, DRS and HA cluster configuration, vSAN storage, NSX networking basics, VM lifecycle management, and vSphere security and permissions.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdYZ01FCu6O/" }
+    ]
+  },
+  {
+    code: "L6M1",
+    name: "CIPS Level 6 Senior Procurement and Supply Management",
+    vendor: "CIPS",
+    category: "Business & Finance",
+    description: "Advanced CIPS qualification covering strategic procurement, supply chain leadership, category management, and organisational sourcing strategy.",
+    topics: ["Strategic Procurement", "Category Management", "Supply Chain Leadership", "Sourcing Strategy", "Contract Management"],
+    preparation: "Study strategic sourcing frameworks, total cost of ownership, category management processes, supplier relationship management, procurement governance, and performance measurement in complex supply chains.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdYaDtDiswJ/" }
+    ]
+  },
+  {
+    code: "CPHQ",
+    name: "Certified Professional in Healthcare Quality",
+    vendor: "NAHQ",
+    category: "Healthcare",
+    description: "Validates healthcare quality management expertise including quality improvement, patient safety, regulatory compliance, and performance measurement.",
+    topics: ["Healthcare Quality Improvement", "Patient Safety", "Regulatory Compliance", "Performance Measurement", "Risk Management"],
+    preparation: "Study quality improvement models such as PDSA and Six Sigma, accreditation standards, patient safety frameworks, data collection and analysis, and leadership in healthcare quality programs.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdYaOKIip2O/" }
+    ]
+  },
+  {
+    code: "CMMC-CCP",
+    name: "CMMC Certified Practitioner",
+    vendor: "CyberAB",
+    category: "Cybersecurity",
+    description: "Covers the Cybersecurity Maturity Model Certification (CMMC) framework, assessment practices, and implementation guidance for organisations in the defense industrial base.",
+    topics: ["CMMC Framework", "NIST SP 800-171", "Assessment Practices", "Defense Contractor Compliance", "Cybersecurity Controls"],
+    preparation: "Study the CMMC 2.0 model levels, NIST 800-171 control requirements, CMMC assessment scoping, documentation requirements, and how organisations demonstrate cybersecurity practices for DoD compliance.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdYaUvcilWY/" }
+    ]
+  },
+  {
+    code: "HPE3-U01",
+    name: "HPE ATP - Hybrid IT Solutions",
+    vendor: "Hewlett Packard Enterprise",
+    category: "Infrastructure & Storage",
+    description: "Validates ability to design, configure, and manage HPE Hybrid IT solutions including compute, storage, networking, and cloud integration.",
+    topics: ["HPE ProLiant", "Hybrid IT Design", "HPE Storage", "Cloud Integration", "Aruba Networking"],
+    preparation: "Study HPE server and storage product families, HPE GreenLake cloud services, Intelligent Infrastructure concepts, Aruba networking fundamentals, and HPE OneView management tools.",
+    links: [
+      { label: "View Resource", url: "https://fontstruct.com/fontstructions/show/2959730/verified-hpe3-u01-exam-dumps-2026" }
+    ]
+  },
+  {
+    code: "Marketing-Cloud-Account-Engagement-Consultant",
+    name: "Salesforce Marketing Cloud Account Engagement Consultant",
+    vendor: "Salesforce",
+    category: "Development & Architecture",
+    description: "Tests expertise in implementing and consulting on Salesforce Marketing Cloud Account Engagement (formerly Pardot), including lead nurturing, scoring, and B2B marketing automation.",
+    topics: ["Pardot / Account Engagement", "Lead Nurturing", "Automation Rules", "Salesforce Integration", "B2B Marketing"],
+    preparation: "Study Account Engagement forms, landing pages, email marketing, automation rules, engagement studio programs, lead scoring and grading, CRM integration, and reporting and analytics.",
+    links: [
+      { label: "View Resource", url: "https://fontstruct.com/fontstructions/show/2959731/marketing-cloud-account-engagement-consultant" }
+    ]
+  },
+  {
+    code: "IIBA-AAC",
+    name: "Agile Analysis Certification",
+    vendor: "IIBA",
+    category: "Business & Finance",
+    description: "IIBA certification validating business analysis skills within agile frameworks, including agile thinking, stakeholder collaboration, and iterative delivery.",
+    topics: ["Agile Business Analysis", "User Stories", "Backlog Management", "Stakeholder Collaboration", "Iterative Delivery"],
+    preparation: "Study agile frameworks including Scrum and Kanban, business analysis in agile contexts, user story writing and acceptance criteria, backlog refinement, and collaboration techniques with development teams.",
+    links: [
+      { label: "View Resource", url: "https://fontstruct.com/fontstructions/show/2959732/trusted-iiba-aac-exam-dumps-2026" }
+    ]
+  },
+  {
+    code: "ACA100",
+    name: "Appian Certified Analyst",
+    vendor: "Appian",
+    category: "Development & Architecture",
+    description: "Validates business analyst skills on the Appian low-code platform, including process design, data requirements, and application analysis.",
+    topics: ["Appian Platform", "Process Modeling", "Data Design", "Business Requirements", "Low-Code Analysis"],
+    preparation: "Study Appian process models, records and data types, interface design principles, rules and constants, reporting capabilities, and best practices for gathering and documenting requirements for Appian applications.",
+    links: [
+      { label: "View Resource", url: "https://fontstruct.com/fontstructions/show/2959734/reliable-aca100-exam-dumps-2026" }
+    ]
+  },
+  {
+    code: "Google-Ads-Video",
+    name: "Google Ads Video Certification",
+    vendor: "Google",
+    category: "Marketing & Digital",
+    description: "Validates expertise in planning, creating, and optimising video advertising campaigns on YouTube and the Google Display Network.",
+    topics: ["YouTube Advertising", "Video Campaign Types", "Audience Targeting", "Bidding Strategies", "Campaign Optimisation"],
+    preparation: "Study YouTube campaign types including TrueView and Bumper Ads, audience targeting options, brand awareness measurement, viewability metrics, creative best practices, and video campaign performance analysis in Google Ads.",
+    links: [
+      { label: "View Resource", url: "https://fontstruct.com/fontstructions/show/2959735/authentic-google-ads-video-dumps" }
+    ]
+  },
+  {
+    code: "AD0-E208",
+    name: "Adobe Analytics Developer Expert",
+    vendor: "Adobe",
+    category: "Development & Architecture",
+    description: "Validates advanced Adobe Analytics implementation skills including data layer design, report suites, custom variables, and API integration.",
+    topics: ["Adobe Analytics", "Data Layer", "Report Suite Configuration", "Custom Variables", "AppMeasurement"],
+    preparation: "Study Adobe Analytics data collection methods, prop and eVar configuration, events, segments, calculated metrics, Data Feeds, Report Builder, Adobe Experience Platform integration, and Analytics API usage.",
+    links: [
+      { label: "View Resource", url: "https://fontstruct.com/fontstructions/show/2959736/accurate-ad0-e208-exam-dumps-2026" }
+    ]
+  },
+  {
+    code: "APD01",
+    name: "Appian Professional Developer",
+    vendor: "Appian",
+    category: "Development & Architecture",
+    description: "Validates professional-level skills in developing Appian applications including process design, interface building, data integration, and deployment.",
+    topics: ["Appian Process Models", "Interface Development", "Data Integration", "Deployment", "Expression Rules"],
+    preparation: "Study Appian expression language, complex interface design with SAIL, integration objects for REST and SOAP, process model patterns, record types, security, and Appian deployment and environment management.",
+    links: [
+      { label: "View Resource", url: "https://fontstruct.com/fontstructions/show/2959739/no-1-ncm-mci-exam-dumps-2026" }
+    ]
+  },
+  {
+    code: "NCM-MCI",
+    name: "Nokia Cloud Migration and Integration",
+    vendor: "Nokia",
+    category: "Networking",
+    description: "Covers Nokia cloud migration strategies, workload integration, service assurance, and cloud-native architecture concepts for network environments.",
+    topics: ["Cloud Migration", "Network Integration", "Cloud-Native Architecture", "Service Assurance", "Microservices"],
+    preparation: "Study cloud migration frameworks, Nokia cloud infrastructure products, containerised network functions, Kubernetes in telco environments, CI/CD for network services, and cloud-native monitoring approaches.",
+    links: [
+      { label: "View Resource", url: "https://fontstruct.com/fontstructions/show/2959740/top-choice-201-exam-questions" }
+    ]
+  },
+  {
+    code: "201",
+    name: "F5 BIG-IP Administrator",
+    vendor: "F5 Networks",
+    category: "Networking",
+    description: "Tests foundational F5 BIG-IP administration skills including local traffic management, virtual server configuration, pool management, and health monitoring.",
+    topics: ["BIG-IP LTM", "Virtual Servers", "Pool Members", "iRules", "Health Monitors"],
+    preparation: "Study F5 BIG-IP Local Traffic Manager concepts, virtual server and pool configuration, persistence profiles, SSL offloading, iRules basics, health monitor types, and BIG-IP system administration tasks.",
+    links: [
+      { label: "View Resource", url: "https://fontstruct.com/fontstructions/show/2959740/top-choice-201-exam-questions" }
+    ]
+  },
+  {
+    code: "CBSA",
+    name: "Certified Blockchain Solution Architect",
+    vendor: "Blockchain Council",
+    category: "Development & Architecture",
+    description: "Validates understanding of blockchain architecture, distributed ledger technology, consensus mechanisms, and the design of blockchain-based solutions.",
+    topics: ["Blockchain Architecture", "Distributed Ledgers", "Consensus Mechanisms", "Smart Contracts", "Decentralised Applications"],
+    preparation: "Study blockchain fundamentals, Bitcoin and Ethereum architecture, consensus algorithms including PoW and PoS, Hyperledger Fabric, smart contract development, security considerations, and real-world use case design.",
+    links: [
+      { label: "View Resource", url: "https://fontstruct.com/fontstructions/show/2959741/top-students-choice-cbsa-dumps" }
+    ]
+  },
+  {
+    code: "312-41",
+    name: "EC-Council Certified SOC Analyst (CSA)",
+    vendor: "EC-Council",
+    category: "Cybersecurity",
+    description: "Validates skills required to work in a Security Operations Center, including threat monitoring, SIEM operations, log analysis, and incident response procedures.",
+    topics: ["SOC Operations", "SIEM", "Log Analysis", "Threat Intelligence", "Incident Response"],
+    preparation: "Study SOC roles and processes, network and host-based intrusion detection, SIEM tool usage, threat intelligence platforms, alert triage procedures, incident escalation, and compliance monitoring.",
+    links: [
+      { label: "View Resource", url: "https://bestdori.com/community/posts/251203/vedcert1-Top-Choice-Questions-312-41-Dumps-For-Better-Results" }
+    ]
+  },
+  {
+    code: "GSLC",
+    name: "GIAC Security Leadership Certification",
+    vendor: "GIAC / SANS",
+    category: "Cybersecurity",
+    description: "Covers information security management, policy development, risk management, legal issues, and leadership skills required for security managers and directors.",
+    topics: ["Security Leadership", "Risk Management", "Security Policy", "Legal & Compliance", "Incident Management"],
+    preparation: "Study security governance frameworks, risk assessment methodologies, security program management, business continuity planning, legal and regulatory requirements, and communication of security concepts to executive stakeholders.",
+    links: [
+      { label: "View Resource", url: "https://bestdori.com/community/posts/251204/vedcert1-Verified-Real-Questions-GSLC-Dumps-For-Exam-Success" }
+    ]
+  },
+  {
+    code: "L6M7",
+    name: "CIPS Level 6 Strategic Procurement Leadership",
+    vendor: "CIPS",
+    category: "Business & Finance",
+    description: "Advanced CIPS module focusing on strategic leadership capabilities in procurement and supply chain, including organisational change and innovation.",
+    topics: ["Procurement Leadership", "Organisational Change", "Innovation", "Strategic Influence", "Supply Chain Transformation"],
+    preparation: "Study strategic leadership theories, change management in procurement contexts, procurement innovation models, sustainability in supply chains, measuring procurement's strategic value, and stakeholder influence at board level.",
+    links: [
+      { label: "View Resource", url: "https://bestdori.com/community/posts/251205/vedcert1-Pass-First-Attempt-L6M7-Dumps-For-Better-Preparation" }
+    ]
+  },
+  {
+    code: "BL00100-101-E",
+    name: "Broadcom / Brocade SAN Foundations",
+    vendor: "Broadcom / Brocade",
+    category: "Infrastructure & Storage",
+    description: "Covers Brocade Fibre Channel SAN fundamentals including fabric architecture, switch configuration, zoning, and SAN monitoring.",
+    topics: ["Fibre Channel", "SAN Fabric", "Zoning", "Brocade FOS", "SAN Management"],
+    preparation: "Study Fibre Channel concepts including N-Port, F-Port, and E-Port, Brocade Fabric OS CLI, fabric login process, zoning configuration and best practices, SAN monitoring tools, and troubleshooting common SAN issues.",
+    links: [
+      { label: "View Resource", url: "https://bestdori.com/community/posts/251206/vedcert1-Latest-Exam-Questions-BL00100-101-Dumps-For-Certification-Succ" }
+    ]
+  },
+  {
+    code: "ACE-P-ALE1.04",
+    name: "Aruba Certified Edge Professional",
+    vendor: "Aruba / HPE",
+    category: "Networking",
+    description: "Validates professional-level expertise in designing, deploying, and managing Aruba edge networking solutions including wireless, wired, and SD-WAN.",
+    topics: ["Aruba Wireless", "SD-WAN", "Network Access Control", "Edge Architecture", "ClearPass Policy Manager"],
+    preparation: "Study Aruba AOS-CX and AOS-8 architectures, HPE Aruba Central management, ClearPass Policy Manager for network access control, SD-WAN design principles, wireless security protocols, and network segmentation strategies.",
+    links: [
+      { label: "View Resource", url: "https://bestdori.com/community/posts/251207/vedcert1-Most-Trusted-Dumps-ACE-P-ALE1-04-Dumps-For-Better-Results" }
+    ]
+  },
+  {
+    code: "3V0-22.21",
+    name: "VMware vSphere Advanced Design",
+    vendor: "VMware / Broadcom",
+    category: "Cloud & Virtualisation",
+    description: "Advanced design certification for vSphere 7 environments, testing ability to architect complex virtualisation solutions based on business requirements.",
+    topics: ["vSphere Design", "vSAN Design", "NSX-T Design", "Availability Architecture", "Performance Design"],
+    preparation: "Study vSphere design methodology using AMPRS (Availability, Manageability, Performance, Recoverability, Security), vSAN stretched cluster design, NSX-T logical network design, disaster recovery architecture, and translating business requirements into technical designs.",
+    links: [
+      { label: "View Resource", url: "https://bestdori.com/community/posts/251208/vedcert1-Real-Exam-Questions-3V0-22-21-Dumps-For-Higher-Scores" }
+    ]
+  },
+  {
+    code: "VCS-413",
+    name: "Administration of Veritas NetBackup 10.x",
+    vendor: "Veritas",
+    category: "Infrastructure & Storage",
+    description: "Validates skills in administering Veritas NetBackup 10.x including backup policy configuration, media management, storage units, and recovery operations.",
+    topics: ["NetBackup Administration", "Backup Policies", "Media Management", "Deduplication", "Disaster Recovery"],
+    preparation: "Study NetBackup 10.x architecture, master and media server configuration, storage unit and disk pool setup, backup policy creation, tape management, deduplication, Instant Recovery, and NetBackup command-line tools.",
+    links: [
+      { label: "View Resource", url: "https://bestdori.com/community/posts/251209/vedcert1-Success-Focused-Prep-VCS-413-Dumps-For-Success" }
+    ]
+  },
+  {
+    code: "4A0-104",
+    name: "Nokia Border Gateway Protocol",
+    vendor: "Nokia",
+    category: "Networking",
+    description: "Covers advanced BGP concepts and implementation on Nokia SR OS routers, including iBGP, eBGP, route policies, and BGP security.",
+    topics: ["BGP Fundamentals", "iBGP & eBGP", "Route Policies", "BGP Security", "Nokia SR OS"],
+    preparation: "Study BGP operation, attribute manipulation, route reflectors, confederations, BGP policy framework on SR OS, BGP security features including RPKI and prefix filtering, and troubleshooting BGP adjacency and route propagation issues.",
+    links: [
+      { label: "View Resource", url: "https://bestdori.com/community/posts/251210/vedcert1-Latest-Verified-Dumps-4A0-104-Dumps-For-Exam-Readiness" }
+    ]
+  },
+  {
+    code: "C90.03",
+    name: "Cloud Architecture Design",
+    vendor: "EXIN / Open Group",
+    category: "Cloud & Virtualisation",
+    description: "Covers cloud architecture principles, service models, deployment models, cloud governance, and designing scalable and secure cloud environments.",
+    topics: ["Cloud Architecture", "Service Models", "IaaS / PaaS / SaaS", "Cloud Governance", "Security Design"],
+    preparation: "Study cloud service and deployment models, multi-cloud and hybrid architecture patterns, cloud governance frameworks, security-by-design principles, cloud cost management, and migration planning for enterprise workloads.",
+    links: [
+      { label: "View Resource", url: "https://bestdori.com/community/posts/251211/vedcert1-Expert-Recommended-Prep-C90-03-Dumps-For-Certification-Su" }
+    ]
+  },
+  {
+    code: "ITIL4-DPI",
+    name: "ITIL 4 Specialist: Drive Stakeholder Value",
+    vendor: "PeopleCert / Axelos",
+    category: "IT Service Management",
+    description: "Covers stakeholder engagement, service value co-creation, customer journey design, and managing relationships throughout the service lifecycle in ITIL 4.",
+    topics: ["Stakeholder Engagement", "Customer Journey", "Service Value Co-Creation", "Relationship Management", "Demand & Opportunity"],
+    preparation: "Study ITIL 4 service value chain, customer and user experience design, service relationship models, fostering stakeholder relationships, onboarding and offboarding practices, and continual improvement in customer engagement.",
+    links: [
+      { label: "View Resource", url: "https://bestdori.com/community/posts/251212/vedcert1-Verified-Practice-Questions-ITIL4-DPI-Dumps-For-Better-Learn" }
+    ]
+  },
+  {
+    code: "1V0-71.21",
+    name: "VMware Associate VMware Application Modernization",
+    vendor: "VMware / Broadcom",
+    category: "Cloud & Virtualisation",
+    description: "Entry-level certification covering concepts of application modernisation, containers, Kubernetes, microservices, and the Tanzu platform.",
+    topics: ["Application Modernisation", "Containers", "Kubernetes Basics", "Microservices", "Tanzu Overview"],
+    preparation: "Study containerisation concepts using Docker, Kubernetes fundamentals including pods and deployments, the principles of twelve-factor applications, VMware Tanzu platform components, and the business drivers for application modernisation.",
+    links: [
+      { label: "View Resource", url: "https://xfdev.yesterdaystractors.com/index.php?threads/1855608/" }
+    ]
+  },
+  {
+    code: "CEHPC",
+    name: "Certified Ethical Hacker Practical Challenge",
+    vendor: "EC-Council",
+    category: "Cybersecurity",
+    description: "A practical, performance-based challenge exam testing real-world ethical hacking skills including network scanning, exploitation, post-exploitation, and reporting.",
+    topics: ["Network Scanning", "Exploitation Techniques", "Post-Exploitation", "Web Application Hacking", "Reporting"],
+    preparation: "Develop hands-on skills with penetration testing tools including Nmap, Metasploit, Burp Suite, and Nessus. Practice network reconnaissance, vulnerability identification, privilege escalation, and writing structured penetration test reports.",
+    links: [
+      { label: "View Resource", url: "https://xfdev.yesterdaystractors.com/index.php?threads/1855617/" }
+    ]
+  },
+  {
+    code: "D-SNC-DY-00",
+    name: "Dell Storage Networking Cloud Deployment",
+    vendor: "Dell Technologies",
+    category: "Infrastructure & Storage",
+    description: "Covers Dell EMC storage networking deployment practices in cloud environments, including SAN configuration, cloud storage integration, and management.",
+    topics: ["Dell EMC Storage", "SAN Deployment", "Cloud Storage", "Networking Integration", "Management Tools"],
+    preparation: "Study Dell EMC PowerStore, PowerMax, and PowerEdge products, SAN fabric configuration, cloud storage gateways, Dell Technologies Cloud Platform, and storage management using Dell EMC Unisphere and related tools.",
+    links: [
+      { label: "View Resource", url: "https://xfdev.yesterdaystractors.com/index.php?threads/1855625/" }
+    ]
+  },
+  {
+    code: "500-560",
+    name: "Cisco Networking: On-Premise and Cloud Solutions",
+    vendor: "Cisco",
+    category: "Networking",
+    description: "Covers Cisco networking solutions spanning on-premises and cloud deployments, including hybrid architectures, collaboration tools, and Cisco product portfolio.",
+    topics: ["Cisco On-Premise Networking", "Cloud Networking", "Hybrid Architecture", "Cisco Portfolio", "SD-WAN"],
+    preparation: "Study Cisco Catalyst and Meraki networking products, Cisco Webex collaboration, Cisco SD-WAN (Viptela), hybrid cloud connectivity, cloud management through Cisco DNA Center, and the positioning of Cisco on-premise versus cloud solutions.",
+    links: [
+      { label: "View Resource", url: "https://xfdev.yesterdaystractors.com/index.php?threads/1855635/" }
+    ]
+  },
+  {
+    code: "300-635",
+    name: "Cisco Automating and Programming Cisco Data Center Solutions",
+    vendor: "Cisco",
+    category: "Networking",
+    description: "Tests expertise in automating Cisco data center infrastructure using APIs, Python scripting, Ansible, and infrastructure-as-code approaches with ACI and NX-OS.",
+    topics: ["Network Automation", "Python for Networking", "Ansible", "Cisco ACI APIs", "NX-OS Programmability"],
+    preparation: "Study Python scripting for network automation, REST API concepts, Cisco ACI REST API and SDK, Ansible playbooks for data center configuration, Terraform for infrastructure-as-code, and DevOps practices applied to data center networking.",
+    links: [
+      { label: "View Resource", url: "https://xfdev.yesterdaystractors.com/index.php?threads/1855639/" }
+    ]
+  },
+  {
+    code: "ESG-Investing",
+    name: "ESG Investing Certification",
+    vendor: "CFA Institute / General",
+    category: "Business & Finance",
+    description: "Covers Environmental, Social, and Governance investment analysis, ESG integration strategies, sustainable investing frameworks, and ESG data evaluation.",
+    topics: ["ESG Analysis", "Sustainable Investing", "ESG Integration", "Stakeholder Engagement", "Materiality Assessment"],
+    preparation: "Study ESG factor identification, sustainability reporting standards including GRI and SASB, ESG rating methodologies, integration of ESG into financial analysis, climate risk assessment, and responsible investment principles.",
+    links: [
+      { label: "View Resource", url: "https://xfdev.yesterdaystractors.com/index.php?threads/1855647/" }
+    ]
+  },
+  {
+    code: "FCP_FWF_AD-7.4",
+    name: "Fortinet Certified Professional - FortiWeb Administrator 7.4",
+    vendor: "Fortinet",
+    category: "Cybersecurity",
+    description: "Validates expertise in administering FortiWeb 7.4 web application firewall, including policy configuration, bot mitigation, API protection, and threat analysis.",
+    topics: ["Web Application Firewall", "FortiWeb Policies", "Bot Mitigation", "API Security", "OWASP Protection"],
+    preparation: "Study FortiWeb deployment modes, server pool and virtual server configuration, WAF profiles and signature updates, machine learning-based threat detection, API gateway protection, and FortiWeb log analysis and reporting.",
+    links: [
+      { label: "View Resource", url: "https://xfdev.yesterdaystractors.com/index.php?threads/1855655/" }
+    ]
+  },
+  {
+    code: "Plat-Arch-201",
+    name: "Salesforce Platform App Builder / Architect 201",
+    vendor: "Salesforce",
+    category: "Development & Architecture",
+    description: "Covers Salesforce platform architecture, declarative development, data modeling, automation, and application lifecycle management.",
+    topics: ["Salesforce Data Modeling", "Declarative Automation", "Flows", "Security Model", "AppExchange"],
+    preparation: "Study Salesforce object relationships, validation rules, formulas, Flow Builder automation, Approval Processes, Salesforce security model including profiles and permission sets, and change management using sandboxes and deployment tools.",
+    links: [
+      { label: "View Resource", url: "https://xfdev.yesterdaystractors.com/index.php?threads/1855665/" }
+    ]
+  },
+  {
+    code: "AD0-E602",
+    name: "Adobe Real-Time CDP Business Practitioner Expert",
+    vendor: "Adobe",
+    category: "Development & Architecture",
+    description: "Validates expertise in using Adobe Real-Time CDP for audience segmentation, identity resolution, data governance, and activation across marketing channels.",
+    topics: ["Real-Time CDP", "Audience Segmentation", "Identity Resolution", "Data Governance", "Activation & Destinations"],
+    preparation: "Study Adobe Experience Platform schemas, datasets, and XDM, real-time profile building, segment creation, identity namespaces, data governance labels and policies, and activating audiences to destinations including paid media and email platforms.",
+    links: [
+      { label: "View Resource", url: "https://xfdev.yesterdaystractors.com/index.php?threads/1855669/" }
+    ]
+  },
+  {
+    code: "Senior-Internal-Corrosion-Technologist",
+    name: "NACE Senior Internal Corrosion Technologist",
+    vendor: "AMPP / NACE",
+    category: "Engineering & Technical",
+    description: "Validates advanced knowledge of internal corrosion mechanisms, monitoring techniques, mitigation strategies, and integrity management for pipelines and vessels.",
+    topics: ["Corrosion Mechanisms", "Internal Monitoring", "Inhibitor Programs", "Integrity Management", "Risk Assessment"],
+    preparation: "Study electrochemical corrosion principles, CO2 and H2S corrosion, microbiologically influenced corrosion, chemical injection programs, internal corrosion direct assessment, and risk-based integrity management for oil and gas systems.",
+    links: [
+      { label: "View Resource", url: "https://xfdev.yesterdaystractors.com/index.php?threads/1855676/" }
+    ]
+  },
+  {
+    code: "CDFOM",
+    name: "Certified Data Fabric and Operations Manager",
+    vendor: "General",
+    category: "Database & Cloud",
+    description: "Covers data fabric architecture principles, data integration, metadata management, and operational management of distributed data environments.",
+    topics: ["Data Fabric Architecture", "Data Integration", "Metadata Management", "Data Operations", "Distributed Data"],
+    preparation: "Study data fabric design patterns, ETL and ELT processes, data catalog and metadata management tools, data governance, master data management, and operational monitoring of data pipelines and distributed data platforms.",
+    links: [
+      { label: "View Resource", url: "https://app.talkshoe.com/show/premium-cdfom-exam-questions-2026-with-authentic-practice-material" }
+    ]
+  },
+  {
+    code: "1Z0-133",
+    name: "Oracle WebLogic Server 12c: Administration",
+    vendor: "Oracle",
+    category: "Database & Cloud",
+    description: "Tests skills in installing, configuring, and managing Oracle WebLogic Server 12c, including domain administration, deployment, clustering, and security.",
+    topics: ["WebLogic Administration", "Domain Configuration", "Clustering", "Deployment", "Security Configuration"],
+    preparation: "Study WebLogic domain architecture, managed server and cluster configuration, JDBC data sources, JMS configuration, deployment of applications, SSL configuration, monitoring with WLST, and WebLogic patching and lifecycle management.",
+    links: [
+      { label: "View Resource", url: "https://app.talkshoe.com/show/1z0-133-study-questions-2026-reflecting-the-latest-exam-structure" }
+    ]
+  },
+  {
+    code: "CBCI",
+    name: "Certificate of the BCI",
+    vendor: "BCI (Business Continuity Institute)",
+    category: "IT Service Management",
+    description: "Foundation-level certification validating knowledge of business continuity management principles, risk assessment, BIA, and recovery planning.",
+    topics: ["Business Continuity Management", "Risk Assessment", "Business Impact Analysis", "Recovery Planning", "BCI Good Practice Guidelines"],
+    preparation: "Study the BCI Good Practice Guidelines, business impact analysis methodology, risk assessment techniques, recovery time and point objectives, crisis communication, exercising and testing continuity plans, and embedding BCM in organisational culture.",
+    links: [
+      { label: "View Resource", url: "https://app.talkshoe.com/show/verified-cbci-exam-dumps-with-updated-questions" }
+    ]
+  },
+  {
+    code: "8020",
+    name: "Actuate BIRT Report Development",
+    vendor: "Actuate / OpenText",
+    category: "Development & Architecture",
+    description: "Covers BIRT (Business Intelligence and Reporting Tools) report development including data source connectivity, layout design, scripting, and deployment.",
+    topics: ["BIRT Report Design", "Data Source Configuration", "Scripting", "Charting", "Report Deployment"],
+    preparation: "Study BIRT Report Designer interface, data set and data source creation, report layouts including tabular and cross-tab, BIRT scripting using JavaScript, chart configuration, parameterised reports, and deploying reports to the BIRT viewer or iServer.",
+    links: [
+      { label: "View Resource", url: "https://app.talkshoe.com/show/latest-2026-8020-practice-set-with-realistic-questions-confirmed-solutions" }
+    ]
+  },
+  {
+    code: "CFE-Investigation",
+    name: "Certified Fraud Examiner - Investigation",
+    vendor: "ACFE",
+    category: "Business & Finance",
+    description: "Covers fraud investigation techniques including interview strategies, document examination, evidence collection, and legal considerations for fraud examiners.",
+    topics: ["Fraud Investigation", "Interview Techniques", "Document Examination", "Evidence Collection", "Legal Considerations"],
+    preparation: "Study fraud investigation methodologies, admission-seeking interview techniques, document and transaction analysis, obtaining and preserving evidence, working with legal counsel, and writing investigation reports.",
+    links: [
+      { label: "View Resource", url: "https://app.talkshoe.com/show/cfe-investigation-exam-prep-with-verified-questions-for-confident-preparation" }
+    ]
+  },
+  {
+    code: "CIS-VRM",
+    name: "ServiceNow Certified Implementation Specialist - Vendor Risk Management",
+    vendor: "ServiceNow",
+    category: "IT Service Management",
+    description: "Validates skills in implementing and configuring the ServiceNow Vendor Risk Management application including assessment workflows and third-party risk.",
+    topics: ["ServiceNow VRM", "Vendor Risk Assessment", "Third-Party Risk", "GRC Platform", "Workflow Configuration"],
+    preparation: "Study ServiceNow GRC platform fundamentals, Vendor Risk Management module configuration, assessment templates, vendor engagement workflows, risk scoring, remediation task management, and reporting for third-party risk programs.",
+    links: [
+      { label: "View Resource", url: "https://app.talkshoe.com/show/accurate-exam_code-certification-questions-2026-with-confirmed-answers" }
+    ]
+  },
+  {
+    code: "200-710",
+    name: "Zscaler Zero Trust Associate",
+    vendor: "Zscaler",
+    category: "Cybersecurity",
+    description: "Covers Zscaler Zero Trust Exchange architecture, internet access security, private access, and foundational zero trust networking concepts.",
+    topics: ["Zero Trust Architecture", "Zscaler Internet Access", "Zscaler Private Access", "Cloud Security", "Secure Web Gateway"],
+    preparation: "Study zero trust principles, Zscaler cloud platform architecture, ZIA policy configuration for web and data security, ZPA for secure remote access to private applications, SSL inspection, and Zscaler deployment models.",
+    links: [
+      { label: "View Resource", url: "https://app.talkshoe.com/show/200-710-exam-dumps-2026-with-latest-questions-verified-solutions" }
+    ]
+  },
+  {
+    code: "712-50",
+    name: "EC-Council Certified CISO",
+    vendor: "EC-Council",
+    category: "Cybersecurity",
+    description: "Validates executive-level information security leadership skills including security program governance, risk management, strategic planning, and board communication.",
+    topics: ["Security Governance", "Risk Management", "Security Program Management", "Compliance", "Strategic Planning"],
+    preparation: "Study enterprise security governance frameworks, information risk management, security metrics and KPIs, audit and compliance management, incident management leadership, budget and resource management for security programs, and communicating security risk to executive leadership.",
+    links: [
+      { label: "View Resource", url: "https://app.talkshoe.com/show/top-choice-712-50-practice-questions-with-authentic-exam-style-content" }
+    ]
+  },
+  {
+    code: "CIMAPRO19-P02-1",
+    name: "CIMA Professional - P02 Advanced Management Accounting",
+    vendor: "CIMA",
+    category: "Business & Finance",
+    description: "Advanced management accounting module covering cost management, decision-making under uncertainty, performance management systems, and strategic pricing.",
+    topics: ["Advanced Cost Management", "Decision Making", "Performance Management", "Pricing Strategy", "Transfer Pricing"],
+    preparation: "Study activity-based costing, throughput accounting, beyond budgeting concepts, strategic performance measurement frameworks, risk and uncertainty in financial decisions, and transfer pricing for international operations.",
+    links: [
+      { label: "View Resource", url: "https://app.talkshoe.com/show/fresh-2026-cimapro19-p02-1-question-bank-with-verified-answers" }
+    ]
+  },
+  {
+    code: "GSEC",
+    name: "GIAC Security Essentials Certification",
+    vendor: "GIAC / SANS",
+    category: "Cybersecurity",
+    description: "Broad information security certification covering network security, cryptography, access controls, incident response, and essential defensive security skills.",
+    topics: ["Network Security", "Cryptography", "Access Controls", "Incident Response", "Linux & Windows Security"],
+    preparation: "Study TCP/IP networking, common attack types and defenses, cryptographic principles, PKI, authentication methods, Windows and Linux security hardening, network traffic analysis, vulnerability management, and basic incident handling procedures.",
+    links: [
+      { label: "View Resource", url: "https://app.talkshoe.com/show/no-1-updated-gsec-exam-questions-2026-with-accurate-solutions" }
+    ]
+  },
+  {
+    code: "CTAL-TTA",
+    name: "ISTQB Certified Tester Advanced Level - Test Analyst",
+    vendor: "ISTQB",
+    category: "Quality & Testing",
+    description: "Advanced software testing certification focusing on test analysis, design techniques, exploratory testing, defect classification, and quality characteristics.",
+    topics: ["Test Analysis", "Test Design Techniques", "Exploratory Testing", "Defect Classification", "Quality Characteristics"],
+    preparation: "Study black-box test design techniques in depth, risk-based test analysis, defect taxonomies, acceptance test-driven development, exploratory and session-based testing, and quality characteristics from ISO 25010.",
+    links: [
+      { label: "View Resource", url: "https://profit.ly/user/kurrkupps/blog/get-ready-for-the-ctal-tta-exam-with-updated-dumps-2026" }
+    ]
+  },
+  {
+    code: "202-450",
+    name: "LPIC-2 Linux Engineer",
+    vendor: "LPI",
+    category: "Infrastructure & Storage",
+    description: "Advanced Linux certification covering system administration, kernel management, system startup, networking services, security, and mail server configuration.",
+    topics: ["Linux Kernel", "System Startup", "Network Services", "Linux Security", "Mail Server Admin"],
+    preparation: "Study Linux kernel compilation and management, GRUB bootloader, advanced network configuration, DNS with BIND, HTTP server administration, Samba and NFS, Linux firewall configuration using iptables and nftables, and OpenLDAP.",
+    links: [
+      { label: "View Resource", url: "https://profit.ly/user/kurrkupps/blog/202-450-exam-dumps-2026--practice-test--exam-preparation" }
+    ]
+  },
+  {
+    code: "ASDEV01",
+    name: "Atlassian ACP-DevOps Jira Service Management",
+    vendor: "Atlassian",
+    category: "IT Service Management",
+    description: "Validates knowledge of Atlassian DevOps practices integrated with Jira Service Management including incident management, change management, and CI/CD workflows.",
+    topics: ["Jira Service Management", "Incident Management", "Change Management", "DevOps Practices", "CI/CD Integration"],
+    preparation: "Study Jira Service Management project configuration, incident and problem management workflows, change advisory board processes, Jira and Bitbucket Pipelines integration, Atlassian Compass, and DevOps metrics for measuring flow and reliability.",
+    links: [
+      { label: "View Resource", url: "https://profit.ly/user/kurrkupps/blog/asdev01-pdf-dumps-2026--updated-questions--exam-guide" }
+    ]
+  },
+  {
+    code: "1Z0-082",
+    name: "Oracle Database Administration I",
+    vendor: "Oracle",
+    category: "Database & Cloud",
+    description: "Foundational Oracle DBA certification covering Oracle Database architecture, SQL, instance management, storage, backup and recovery basics, and security.",
+    topics: ["Oracle Architecture", "Instance Management", "SQL", "Tablespace & Storage", "Backup & Recovery"],
+    preparation: "Study Oracle Database 19c or 21c architecture, SGA and PGA memory structures, database instance startup and shutdown, tablespace and datafile management, user and privilege management, RMAN basics, and Oracle Data Pump for export and import.",
+    links: [
+      { label: "View Resource", url: "https://profit.ly/user/kurrkupps/blog/1z0-082-exam--latest-dumps--practice-questions-2026" }
+    ]
+  },
+  {
+    code: "Sustainable-Investing",
+    name: "Sustainable Investing Certification",
+    vendor: "CFA Institute / General",
+    category: "Business & Finance",
+    description: "Covers sustainable investing principles, ESG integration into investment portfolios, impact investing frameworks, and sustainability-related financial risk.",
+    topics: ["Sustainable Finance", "ESG Integration", "Impact Investing", "Climate Risk", "Green Bonds"],
+    preparation: "Study sustainable investment strategies, ESG screening approaches including negative and positive screening, thematic investing in clean energy and infrastructure, impact measurement frameworks, climate-related financial disclosures under TCFD, and green bond principles.",
+    links: [
+      { label: "View Resource", url: "https://profit.ly/user/kurrkupps/blog/sustainable-investing-exam-dumps-2026--pdf-questions--preparation-resources" }
+    ]
+  },
+  {
+    code: "ADX-201",
+    name: "Salesforce Administrator",
+    vendor: "Salesforce",
+    category: "Development & Architecture",
+    description: "Core Salesforce Administrator certification covering setup, user management, data management, automation, reports and dashboards, and the Salesforce platform.",
+    topics: ["Salesforce Setup", "User Management", "Data Management", "Automation", "Reports & Dashboards"],
+    preparation: "Study Salesforce user, role, and profile management, object and field configuration, data import tools, workflow rules, validation rules, Flow Builder, reports and dashboards creation, and Salesforce security model including sharing settings and record access.",
+    links: [
+      { label: "View Resource", url: "https://profit.ly/user/kurrkupps/blog/adx-201-exam-dumps-2026--pdf-questions--preparation-resources" }
+    ]
+  },
+  {
+    code: "Operations-Management",
+    name: "Operations Management Certification",
+    vendor: "General / Academic",
+    category: "Business & Finance",
+    description: "Covers core operations management principles including process design, capacity planning, supply chain management, quality management, and lean operations.",
+    topics: ["Process Design", "Capacity Planning", "Supply Chain", "Quality Management", "Lean Operations"],
+    preparation: "Study operations strategy, process flow analysis, capacity and demand management, inventory management models, supply chain design, quality tools including Six Sigma and SPC, project management basics, and service operations management.",
+    links: [
+      { label: "View Resource", url: "https://profit.ly/user/kurrkupps/blog/study-for-operations-management-with-updated-exam-dumps--practice-questions" }
+    ]
+  },
+  {
+    code: "CDCP-001",
+    name: "Certified Data Centre Professional",
+    vendor: "EPI",
+    category: "Infrastructure & Storage",
+    description: "Validates data centre knowledge including physical infrastructure, power and cooling systems, cabling, monitoring, and data centre management best practices.",
+    topics: ["Data Centre Infrastructure", "Power Systems", "Cooling Systems", "Cabling Standards", "DCIM"],
+    preparation: "Study data centre tier classification, UPS and generator systems, precision cooling and hot/cold aisle containment, structured cabling, data centre monitoring tools, physical security, and capacity planning for data centre environments.",
+    links: [
+      { label: "View Resource", url: "https://profit.ly/user/kurrkupps/blog/cdcp-001-questions--dumps-2026--certification-exam-preparation" }
+    ]
+  },
+  {
+    code: "CPIM-Part-2",
+    name: "APICS CPIM Part 2",
+    vendor: "APICS / ASCM",
+    category: "Business & Finance",
+    description: "Advanced CPIM module covering strategic supply chain management, execution and control, sales and operations planning, and enterprise resources planning.",
+    topics: ["S&OP Planning", "Master Scheduling", "Capacity Requirements", "Supply Chain Execution", "ERP Concepts"],
+    preparation: "Study master production scheduling, capacity planning techniques, sales and operations planning processes, supply chain performance metrics, ERP system principles, and aligning supply chain strategy with business objectives.",
+    links: [
+      { label: "View Resource", url: "https://profit.ly/user/kurrkupps/blog/cpim-part-2-exam-updated-dumps-2026--practice-test--study-questions" }
+    ]
+  },
+  {
+    code: "PL-400",
+    name: "Microsoft Power Platform Developer",
+    vendor: "Microsoft",
+    category: "Development & Architecture",
+    description: "Tests developer skills in extending the Microsoft Power Platform through custom connectors, Power Apps component framework, Dataverse plugins, and integration.",
+    topics: ["Power Apps Component Framework", "Custom Connectors", "Dataverse Plugins", "Power Automate", "Azure Integration"],
+    preparation: "Study PCF component development using TypeScript, custom connector creation, Dataverse plugin and custom workflow activity development, Power Automate advanced flows, Azure Functions integration with Power Platform, and ALM for Power Platform solutions.",
+    links: [
+      { label: "View Resource", url: "https://profit.ly/user/kurrkupps/blog/pl-400-dumps-2026--practice-questions--exam-prep" }
+    ]
+  },
+  {
+    code: "GH-600",
+    name: "GitHub Administration",
+    vendor: "GitHub / Microsoft",
+    category: "Development & Architecture",
+    description: "Validates expertise in GitHub enterprise administration including authentication, repository management, security policies, GitHub Actions, and enterprise governance.",
+    topics: ["GitHub Enterprise", "Authentication & SSO", "Repository Management", "Security Policies", "GitHub Actions"],
+    preparation: "Study GitHub Enterprise Server and Cloud administration, SAML SSO and SCIM provisioning, organisation and repository settings, branch protection rules, GitHub Advanced Security features, Actions workflow management, and audit logging.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdJGFqkikfD/" },
+      { label: "Study Resource 2", url: "https://www.kompasiana.com/selenehart3086/6aa3c9d2c925c40375306607/microsoft-gh-600-practice-exam-questions-for-confident-preparation" },
+      { label: "Study Resource 3", url: "https://fontstruct.com/fontstructions/show/2956468/official-gh-600-exam-dumps" },
+      { label: "Study Resource 4", url: "https://bestdori.com/community/posts/247804/vedcert1-2026-Updated-GH-600-Dumps-Practice-Questions" },
+      { label: "Study Resource 5", url: "https://app.talkshoe.com/show/updated-2026-gh-600-exam-dumps-with-real-exam-style-questions" },
+      { label: "Study Resource 6", url: "https://twiki.cern.ch/twiki/bin/view/Cloud/Pass-GH-600-Exam-on-Your-First-Attempt-with-Latest-Exam-Dumps-2026-by-validexamdumps" },
+      { label: "Study Resource 7", url: "https://metafy.gg/posts/DFOTWfieq8f" },
+      { label: "Study Resource 8", url: "https://xfdev.yesterdaystractors.com/index.php?threads/1840523/" },
+      { label: "Study Resource 9", url: "https://howei.com/forum/discussion/certification/ultimate-success-verified-microsoft-gh-600-exam-dumps-2026" },
+      { label: "Study Resource 10", url: "https://emmaklewis.sites.gettysburg.edu/scalar/gh-600-exam-dumps/updated-2026-gh-600-exam-dumps-for-success-in-exam?t=1789644793635" },
+      { label: "Study Resource 11", url: "https://wonderfulday.dk/forum/traade/5987/expert-verified-gh-600-dumps-by-microsoft-with-online-practice-test" },
+      { label: "Study Resource 12", url: "https://training.coursekey.com/eportfolios/4397/Home/Welcome" }
+    ]
+  },
+  {
+    code: "4A0-220",
+    name: "Nokia Optical Networking Advanced",
+    vendor: "Nokia",
+    category: "Networking",
+    description: "Advanced Nokia certification covering optical networking technologies, DWDM systems, coherent optics, and Nokia SROS optical transport configuration.",
+    topics: ["DWDM", "Coherent Optics", "Optical Transport", "Nokia Photonic", "OTN Protocols"],
+    preparation: "Study dense wavelength division multiplexing principles, coherent optical technology, optical amplification, dispersion management, Nokia 1830 Photonic Service Switch, OTN framing, and optical network design and troubleshooting.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdTJi9xiqQz/" },
+      { label: "Study Resource 2", url: "https://fontstruct.com/fontstructions/show/2958550/fresh-release-4a0-220-exam-guide-prep" },
+      { label: "Study Resource 3", url: "https://bestdori.com/community/posts/249518/vedcert1-4A0-220-Exam-Dumps-2026-Updated-Questions" },
+      { label: "Study Resource 4", url: "https://app.talkshoe.com/show/4a0-220-latest-questions-pdf-with-answers-2026" },
+      { label: "Study Resource 5", url: "https://twiki.cern.ch/twiki/bin/view/Cloud/Crack-4A0-220-Exam-with-Updated-Exam-Dumps-2026-by-validexamdumps" },
+      { label: "Study Resource 6", url: "https://metafy.gg/posts/fugrQP0cDei" },
+      { label: "Study Resource 7", url: "https://profit.ly/user/kurrkupps/blog/confidence-builder-4a0-220-dumps-for-2026" },
+      { label: "Study Resource 8", url: "https://help.fumotousa.com/en-US/Community/Post/46251" },
+      { label: "Study Resource 9", url: "https://howei.com/forum/discussion/certification/best-nokia-4a0-220-exam-dumps-2026-verified-questions" },
+      { label: "Study Resource 10", url: "https://training.coursekey.com/eportfolios/4394/Home/Top_Student_Pick_4A0220_Dumps__Study_Guide" },
+      { label: "Study Resource 11", url: "https://emmaklewis.sites.gettysburg.edu/scalar/4a0-220-exam-dumps/updated-2026-4a0-220-exam-dumps-for-success-in-exam?t=1789644685227" },
+      { label: "Study Resource 12", url: "https://wonderfulday.dk/forum/traade/5985/top-rated-4a0-220-dumps-practice-test" }
+    ]
+  },
+  {
+    code: "CLA-11-03",
+    name: "C Programming Language Certified Associate",
+    vendor: "C++ Institute",
+    category: "Development & Architecture",
+    description: "Validates foundational C programming language skills including syntax, data types, control structures, functions, arrays, pointers, and memory management.",
+    topics: ["C Syntax", "Data Types", "Pointers", "Memory Management", "File I/O"],
+    preparation: "Study C language fundamentals, variable types and operators, decision-making and loop constructs, functions and parameter passing, arrays and strings, pointer arithmetic, dynamic memory allocation using malloc and free, and basic file input/output.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdTJuUOijAt/" },
+      { label: "Study Resource 2", url: "https://fontstruct.com/fontstructions/show/2958551/fresh-release-cla-11-03-exam-guide-prep" },
+      { label: "Study Resource 3", url: "https://bestdori.com/community/posts/249519/vedcert1-CLA-11-03-Exam-Dumps-2026-Updated-Questions" },
+      { label: "Study Resource 4", url: "https://app.talkshoe.com/show/no-1-real-cla-11-03-exam-questions-with-accurate-answers" },
+      { label: "Study Resource 5", url: "https://twiki.cern.ch/twiki/bin/view/Cloud/Get-Certified-Faster-with-CLA-11-03-Exam-Dumps-2026-by-validexamdumps" },
+      { label: "Study Resource 6", url: "https://metafy.gg/posts/mItHR9nbKgf" },
+      { label: "Study Resource 7", url: "https://profit.ly/user/kurrkupps/blog/feel-exam-ready-with-the-latest-cla-11-03-dumps" },
+      { label: "Study Resource 8", url: "https://help.fumotousa.com/en-US/Community/Post/46252" },
+      { label: "Study Resource 9", url: "https://howei.com/forum/discussion/certification/latest-cla-11-03-exam-dumps-pdf-questions-updated-2026" },
+      { label: "Study Resource 10", url: "https://training.coursekey.com/eportfolios/4395/Home/Top_Student_Pick_CLA1103_Dumps__Study_Guide" },
+      { label: "Study Resource 11", url: "https://emmaklewis.sites.gettysburg.edu/scalar/cla-11-03-exam-dumps/updated-2026-cla-11-03-exam-dumps-for-success-in-exam?t=1789644734322" },
+      { label: "Study Resource 12", url: "https://wonderfulday.dk/forum/traade/5986/no1-official-cla-11-03-dumps-practice-test" }
+    ]
+  },
+  {
+    code: "OSP-002",
+    name: "Open Source Professional Certification",
+    vendor: "General / LPI",
+    category: "Infrastructure & Storage",
+    description: "Validates practical knowledge of open-source software principles, licensing, community contribution practices, and open-source project management.",
+    topics: ["Open Source Licensing", "Community Contribution", "Version Control", "Project Management", "Linux Fundamentals"],
+    preparation: "Study open-source licensing models including GPL, MIT, and Apache, Git-based collaboration workflows, contributing to open-source projects, open-source project governance, and using and managing open-source dependencies responsibly.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdTTzrxCgph/" },
+      { label: "Study Resource 2", url: "https://fanspo.com/nba/s/wizards/p/bjCJF3EqOhmcXI/how-no-1-osp-002-exam-dumps-help-you-pass-exam-with-confidence" },
+      { label: "Study Resource 3", url: "https://bestdori.com/community/posts/249535/vedcert1-OSP-002-Exam-Dumps-2026-Updated-Questions" },
+      { label: "Study Resource 4", url: "https://fontstruct.com/fontstructions/show/2958582/updated-2026-osp-002-dumps" },
+      { label: "Study Resource 5", url: "https://metafy.gg/posts/7Z6sUXBUbKH" },
+      { label: "Study Resource 6", url: "https://profit.ly/user/kurrkupps/blog/prepare-better-with-verified-osp-002-dumps-2026" },
+      { label: "Study Resource 7", url: "https://help.fumotousa.com/en-US/Community/Post/46248" },
+      { label: "Study Resource 8", url: "https://howei.com/forum/discussion/certification/guaranteed-success-osp-002-real-exam-dumps-with-verified-questions-answers" },
+      { label: "Study Resource 9", url: "https://selene427.tawk.help/article/oracle-1z0-3000-practice-tests-and-exam-questions-for-candidates" },
+      { label: "Study Resource 10", url: "https://training.coursekey.com/eportfolios/4391/Home/Proven_by_Learners_OSP002_Dumps_for_Certification_Success" },
+      { label: "Study Resource 11", url: "https://emmaklewis.sites.gettysburg.edu/scalar/osp-002-exam-dumps/updated-2026-osp-002-exam-dumps-for-2026?t=1789644494134" },
+      { label: "Study Resource 12", url: "https://wonderfulday.dk/forum/traade/5982/latest-osp-002-dumps-2026-practice-test" }
+    ]
+  },
+  {
+    code: "INST1-V8",
+    name: "IBM SPSS Statistics Level 1 v8",
+    vendor: "IBM",
+    category: "Database & Cloud",
+    description: "Covers foundational IBM SPSS Statistics skills including data management, descriptive statistics, data transformation, and basic statistical analysis.",
+    topics: ["SPSS Data Management", "Descriptive Statistics", "Data Transformation", "Frequency Analysis", "Basic Inferential Statistics"],
+    preparation: "Study SPSS data editor, variable and value labels, data transformation using compute and recode, frequency tables and descriptive statistics, cross-tabulations, basic inferential tests including t-tests and chi-square, and output interpretation.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdTT8gCiqTH/" },
+      { label: "Study Resource 2", url: "https://fanspo.com/nba/s/wizards/p/DX7Rpnc8JlezdQ/how-no-1-inst1-v8-exam-dumps-help-you-pass-exam-with-confidence" },
+      { label: "Study Resource 3", url: "https://bestdori.com/community/posts/249541/vedcert1-INST1-V8-Exam-Dumps-2026-Updated-Questions" },
+      { label: "Study Resource 4", url: "https://fontstruct.com/fontstructions/show/2958584/updated-2026-inst1-v8-dumps" },
+      { label: "Study Resource 5", url: "https://metafy.gg/posts/4yiL2NUM8rK" },
+      { label: "Study Resource 6", url: "https://profit.ly/user/kurrkupps/blog/current-2026-release-inst1-v8-dumps-with-verified-answers" },
+      { label: "Study Resource 7", url: "https://help.fumotousa.com/en-US/Community/Post/46249" },
+      { label: "Study Resource 8", url: "https://howei.com/forum/discussion/certification/newly-released-exam-2026-inst1-v8-practice-exam-dumps-for-effective-preparation" },
+      { label: "Study Resource 9", url: "https://training.coursekey.com/eportfolios/4392/Home/Top_Student_Pick_INST1V8_Dumps__Study_Guide" },
+      { label: "Study Resource 10", url: "https://emmaklewis.sites.gettysburg.edu/scalar/inst1-v8-exam-dumps/updated-2026-inst1-v8-exam-dumps-for-success-in-exam?t=1789644585802" },
+      { label: "Study Resource 11", url: "https://wonderfulday.dk/forum/traade/5983/new-inst1-v8-dumps-for-fast-exam-preparation" }
+    ]
+  },
+  {
+    code: "SDA",
+    name: "ServiceNow Certified System Administrator",
+    vendor: "ServiceNow",
+    category: "IT Service Management",
+    description: "Validates core ServiceNow administration skills including platform configuration, user management, workflow automation, and ITSM module setup.",
+    topics: ["ServiceNow Administration", "User & Group Management", "Workflow & Flow Designer", "ITSM Modules", "Service Catalog"],
+    preparation: "Study ServiceNow platform navigation, table and field administration, user roles and access control lists, service catalog creation, workflow and Flow Designer automation, incident and change management configuration, and reporting and dashboards.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdTUDD7irW0/" },
+      { label: "Study Resource 2", url: "https://fanspo.com/nba/s/wizards/p/vd8g1f2Bi2DnVb/how-no-1-sda-exam-dumps-help-you-pass-exam-with-confidence" },
+      { label: "Study Resource 3", url: "https://bestdori.com/community/posts/249542/vedcert1-SDA-Exam-Dumps-2026-Updated-Questions" },
+      { label: "Study Resource 4", url: "https://fontstruct.com/fontstructions/show/2958585/updated-2026-sda-dumps" },
+      { label: "Study Resource 5", url: "https://metafy.gg/posts/Ek5PhomnyOx" }
+    ]
+  },
+  {
+    code: "DCDC-003.1",
+    name: "Data Centre Design Consultant",
+    vendor: "EPI",
+    category: "Infrastructure & Storage",
+    description: "Professional-level data centre design certification covering site selection, physical infrastructure design, electrical and mechanical systems, and sustainability.",
+    topics: ["Site Selection", "Electrical Design", "Mechanical & Cooling Design", "Cabling Design", "Sustainability"],
+    preparation: "Study data centre site selection criteria, power distribution architecture, UPS and generator sizing, precision cooling system design, data centre cabling standards, green data centre principles, and aligning design with TIA-942 and EN 50600 standards.",
+    links: [
+      { label: "View Resource", url: "https://www.instagram.com/prof.davidcooper/p/DdTUIckCtDS/" },
+      { label: "Study Resource 2", url: "https://fanspo.com/nba/s/wizards/p/0q-JMUoFidFWA-/how-no-1-dcdc-0031-exam-dumps-help-you-pass-exam-with-confidence" },
+      { label: "Study Resource 3", url: "https://bestdori.com/community/posts/249543/vedcert1-DCDC-003-1-Exam-Dumps-2026-Updated-Questions" },
+      { label: "Study Resource 4", url: "https://fontstruct.com/fontstructions/show/2958586/updated-2026-dcdc-003-1-dumps" },
+      { label: "Study Resource 5", url: "https://metafy.gg/posts/eFlveGgZA2U" },
+      { label: "Study Resource 6", url: "https://profit.ly/user/kurrkupps/blog/dcdc-0031-dumps-that-make-preparation-easier" },
+      { label: "Study Resource 7", url: "https://help.fumotousa.com/en-US/Community/Post/46250" },
+      { label: "Study Resource 8", url: "https://howei.com/forum/discussion/certification/dcdc-0031-real-exam-dumps-2026-latest-practice-questions" },
+      { label: "Study Resource 9", url: "https://training.coursekey.com/eportfolios/4393/Home/Top_Student_Pick_DCDC0031_Dumps__Study_Guide" },
+      { label: "Study Resource 10", url: "https://emmaklewis.sites.gettysburg.edu/scalar/dcdc-0031-exam-dumps/updated-2026-dcdc-0031-exam-dumps-for-success-in-exam?t=1789644636881" },
+      { label: "Study Resource 11", url: "https://wonderfulday.dk/forum/traade/5984/verified-dcdc-0031-dumps-with-latest-answers" }
+    ]
+  },
+  {
+    code: "4A0-265",
+    name: "Nokia Segment Routing",
+    vendor: "Nokia",
+    category: "Networking",
+    description: "Covers Segment Routing concepts and implementation on Nokia SR OS, including SR-MPLS, SRv6, traffic engineering, and network programmability.",
+    topics: ["Segment Routing", "SR-MPLS", "SRv6", "Traffic Engineering", "Nokia SR OS"],
+    preparation: "Study segment routing architecture, SR-MPLS label allocation, SRv6 SIDs and functions, Segment Routing Traffic Engineering (SR-TE) policy configuration, TI-LFA fast reroute, and Nokia SR OS segment routing configuration and verification.",
+    links: [
+      { label: "View Resource", url: "https://fanspo.com/nba/s/wizards/p/3JIj9Qdj26OCXc/how-no-1-4a0-265-exam-dumps-help-you-pass" },
+      { label: "Study Resource 2", url: "https://www.instagram.com/prof.davidcooper/p/DdWCC7MCtW-/" },
+      { label: "Study Resource 3", url: "https://fontstruct.com/fontstructions/show/2959223/updated-4a0-265-exam-dumps" },
+      { label: "Study Resource 4", url: "https://bestdori.com/community/posts/250465/vedcert1-Newly-Released-4A0-265-Exam-Dumps" },
+      { label: "Study Resource 5", url: "https://metafy.gg/posts/8Q3vZQelTsX" },
+      { label: "Study Resource 6", url: "https://app.talkshoe.com/show/nokia-4a0-265-exam-questions-with-realistic-practice-sets-2026" },
+      { label: "Study Resource 7", url: "https://twiki.cern.ch/twiki/bin/view/Cloud/Build-Exam-Confidence-with-4A0-265-Exam-Dumps-and-PDF-Questions-by-validexamdumps" },
+      { label: "Study Resource 8", url: "https://profit.ly/user/kurrkupps/blog/4a0-265-dumps-updated-certification-exam" },
+      { label: "Study Resource 9", url: "https://selene427.tawk.help/article/how-to-pass-the-1z0-1084-26-exam-with-exam-dumps" },
+      { label: "Study Resource 10", url: "https://training.coursekey.com/eportfolios/4390/Home/4A0265_Exam_Dumps__Practice_Questions_2026" },
+      { label: "Study Resource 11", url: "https://emmaklewis.sites.gettysburg.edu/scalar/4a0-265-exam-dumps/pass-with-confidence-using-updated-4a0-265-dumps?t=1789644247602" },
+      { label: "Study Resource 12", url: "https://wonderfulday.dk/forum/traade/5981/updated-4a0-265-dumps-by-nokia-with-real-questions" }
+    ]
+  }
+];
+
+// ===== CATEGORIES =====
+const CATEGORY_ORDER = [
+  "All",
+  "Cybersecurity",
+  "Networking",
+  "Cloud & Virtualisation",
+  "Development & Architecture",
+  "Infrastructure & Storage",
+  "Database & Cloud",
+  "IT Service Management",
+  "Business & Finance",
+  "Quality & Testing",
+  "Healthcare",
+  "Marketing & Digital",
+  "Engineering & Technical"
+];
+
+// ===== STATE =====
+let activeFilter = "All";
+let searchQuery = "";
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  buildStats();
+  buildFilters();
+  renderCards();
+  setupSearch();
+  setupFAQ();
+  setupMobileNav();
+  setupHeroSearch();
+});
+
+function buildStats() {
+  const unique = [...new Set(exams.map(e => e.code))];
+  const totalLinks = exams.reduce((s, e) => s + e.links.length, 0);
+  const vendors = [...new Set(exams.map(e => e.vendor))].length;
+  const cats = [...new Set(exams.map(e => e.category))].length;
+
+  animateCount('statTotalExams', unique.length);
+  animateCount('statTotalLinks', totalLinks);
+  animateCount('statVendors', vendors);
+  animateCount('statCategories', cats);
+}
+
+function animateCount(id, target) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  let start = 0;
+  const step = Math.ceil(target / 40);
+  const timer = setInterval(() => {
+    start = Math.min(start + step, target);
+    el.textContent = start;
+    if (start >= target) clearInterval(timer);
+  }, 30);
+}
+
+function buildFilters() {
+  const row = document.getElementById('filterRow');
+  const cats = [...new Set(exams.map(e => e.category))];
+  const ordered = CATEGORY_ORDER.filter(c => c === "All" || cats.includes(c));
+
+  ordered.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn' + (cat === 'All' ? ' active' : '');
+    btn.textContent = cat;
+    btn.setAttribute('aria-pressed', cat === 'All' ? 'true' : 'false');
+    btn.addEventListener('click', () => {
+      activeFilter = cat;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      renderCards();
+    });
+    row.appendChild(btn);
+  });
+}
+
+function getFilteredExams() {
+  let list = exams;
+  if (activeFilter !== 'All') list = list.filter(e => e.category === activeFilter);
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    list = list.filter(e =>
+      e.code.toLowerCase().includes(q) ||
+      e.name.toLowerCase().includes(q) ||
+      e.vendor.toLowerCase().includes(q) ||
+      e.category.toLowerCase().includes(q) ||
+      e.description.toLowerCase().includes(q) ||
+      e.topics.some(t => t.toLowerCase().includes(q)) ||
+      e.preparation.toLowerCase().includes(q)
+    );
+  }
+  return list;
+}
+
+function highlight(text, query) {
+  if (!query) return escapeHtml(text);
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return escapeHtml(text).replace(new RegExp(`(${escaped})`, 'gi'), '<mark>$1</mark>');
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderCards() {
+  const grid = document.getElementById('examGrid');
+  const meta = document.getElementById('resultsMeta');
+  const list = getFilteredExams();
+
+  meta.innerHTML = searchQuery
+    ? `Showing <strong>${list.length}</strong> of <strong>${exams.length}</strong> exams matching "<strong>${escapeHtml(searchQuery)}</strong>"`
+    : `Showing <strong>${list.length}</strong> exam${list.length !== 1 ? 's' : ''}${activeFilter !== 'All' ? ` in <strong>${activeFilter}</strong>` : ''}`;
+
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="no-results"><div class="no-results-icon">&#128269;</div><h3>No exams found</h3><p>Try adjusting your search term or selecting a different category filter.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(exam => buildCard(exam)).join('');
+
+  grid.querySelectorAll('.view-all-links-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const extra = btn.previousElementSibling;
+      const open = extra.classList.toggle('open');
+      btn.innerHTML = open
+        ? `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg> Show fewer resources`
+        : `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg> Show all ${exam.links.length} resources`;
+    });
+  });
+}
+
+function buildCard(exam) {
+  const q = searchQuery;
+  const primaryLink = exam.links[0];
+  const extraLinks = exam.links.slice(1);
+  const extraId = 'extra-' + exam.code.replace(/[^a-zA-Z0-9]/g, '-');
+
+  return `<article class="exam-card" role="listitem" data-code="${escapeHtml(exam.code)}" data-category="${escapeHtml(exam.category)}">
+    <div class="exam-card-header">
+      <span class="exam-code-badge">${highlight(exam.code, q)}</span>
+      <div class="exam-header-text">
+        <div class="exam-name">${highlight(exam.name, q)}</div>
+        <span class="exam-vendor">${highlight(exam.vendor, q)}</span>
+      </div>
+    </div>
+    <div class="exam-card-body">
+      <p class="exam-desc">${highlight(exam.description, q)}</p>
+      <div class="knowledge-area">
+        <div class="knowledge-title">Key Knowledge Areas</div>
+        <div class="knowledge-tags">${exam.topics.map(t => `<span class="knowledge-tag">${highlight(t, q)}</span>`).join('')}</div>
+      </div>
+      <p class="exam-desc" style="font-size:0.82rem;color:var(--text-muted)">${highlight(exam.preparation, q)}</p>
+    </div>
+    <div class="exam-card-footer">
+      <div class="resource-links-list">
+        <div class="resource-link-item">
+          <a href="${primaryLink.url}" target="_blank" rel="noopener" aria-label="${escapeHtml(primaryLink.label)} for ${escapeHtml(exam.code)}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            ${escapeHtml(primaryLink.label)}
+          </a>
+        </div>
+        ${extraLinks.length > 0 ? `
+        <div class="extra-links" id="${extraId}">
+          ${extraLinks.map((lnk, i) => `
+          <div class="resource-link-item secondary">
+            <a href="${lnk.url}" target="_blank" rel="noopener" aria-label="${escapeHtml(lnk.label)} for ${escapeHtml(exam.code)}">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              ${escapeHtml(lnk.label)}
+            </a>
+          </div>`).join('')}
+        </div>
+        <button class="view-all-links-toggle" aria-label="Show all resources for ${escapeHtml(exam.code)}" data-examcode="${escapeHtml(exam.code)}" data-total="${exam.links.length}">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          Show all ${exam.links.length} resources
+        </button>` : ''}
+      </div>
+    </div>
+  </article>`;
+}
+
+function setupSearch() {
+  const input = document.getElementById('resourceSearch');
+  const clearBtn = document.getElementById('searchClear');
+
+  input.addEventListener('input', () => {
+    searchQuery = input.value.trim();
+    clearBtn.classList.toggle('visible', searchQuery.length > 0);
+    renderCards();
+  });
+
+  clearBtn.addEventListener('click', () => {
+    input.value = '';
+    searchQuery = '';
+    clearBtn.classList.remove('visible');
+    input.focus();
+    renderCards();
+  });
+}
+
+function setupHeroSearch() {
+  const heroInput = document.getElementById('heroSearchInput');
+  const resourceInput = document.getElementById('resourceSearch');
+  const clearBtn = document.getElementById('searchClear');
+
+  document.getElementById('heroSearchInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') performHeroSearch();
+  });
+}
+
+function performHeroSearch() {
+  const val = document.getElementById('heroSearchInput').value.trim();
+  if (val) {
+    document.getElementById('resourceSearch').value = val;
+    searchQuery = val;
+    document.getElementById('searchClear').classList.add('visible');
+    renderCards();
+  }
+  document.getElementById('resources').scrollIntoView({ behavior: 'smooth' });
+}
+
+function setupFAQ() {
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answerId = btn.getAttribute('aria-controls');
+      const answer = document.getElementById(answerId);
+
+      document.querySelectorAll('.faq-question').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        const aid = b.getAttribute('aria-controls');
+        const a = document.getElementById(aid);
+        if (a) a.classList.remove('open');
+      });
+
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.classList.add('open');
+      }
+    });
+  });
+}
+
+function setupMobileNav() {
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+
+  hamburger.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open.toString());
+  });
+
+  mobileNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+</script>
+</body>
+</html>
